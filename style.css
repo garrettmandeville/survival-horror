@@ -1,6 +1,12 @@
+:root {
+    --text: #c9c4b8;
+    --background: #0b0b0c;
+    --accent: #7a1e1e;
+}
+
 body {
-    background-color: #0b0b0c;
-    color: #c9c4b8;
+    background-color: var(--background);
+    color: var(--text);
     font-family: 'Courier New', monospace;
 }
 h1 {
@@ -13,3 +19,20 @@ h1 {
     padding: 1.5rem;
 }
 
+#options button {
+    background-color: transparent;
+    color: var(--text);
+    font-family: inherit;
+    font-size: inherit;
+    border: 1px solid var(--accent);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+#options button:hover {
+    background-color: var(--accent);
+}
+
+#options button:focus-visible {
+    outline: 2px solid var(--text);
+}
