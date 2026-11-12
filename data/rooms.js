@@ -1,3 +1,16 @@
+/**
+ * The game map. Each room is stored under its id so exits can look it up with rooms[target].
+ *
+ * Room shape:
+ *   id          - must match the room's key in this object
+ *   name        - shown to the player
+ *   description - array of lines, narrated one at a time
+ *   exits       - direction -> { target, lockedBy }
+ *                 target:   id of the room the exit leads to
+ *                 lockedBy: id of the item that unlocks it, or null if open
+ *
+ * Exits are one-way: a two-way passage needs a matching exit in both rooms.
+ */
 const rooms = {
     basement: {
         id: "basement",

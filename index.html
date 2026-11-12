@@ -11,12 +11,21 @@
         <div id="status">
             <h1>Survival Horror</h1>
         </div>
-        <!-- Narration and choices are filled in by game.js -->
+        <!-- game.js fills in the narration and choices, and shows only the compass arrows a room allows -->
         <div id="description">
             <p>Welcome to the game!</p>
         </div>
         <div id="options">
             <button id="startButton">Start Game</button>
+        </div>
+        <!-- Movement controls: each data-direction matches an exit key in data/rooms.js -->
+        <div id="compass">
+            <button data-direction="north" aria-label="Go north">↑</button>
+            <button data-direction="south" aria-label="Go south">↓</button>
+            <button data-direction="east" aria-label="Go east">→</button>
+            <button data-direction="west" aria-label="Go west">←</button>
+            <button data-direction="up" aria-label="Go up">Up</button>
+            <button data-direction="down" aria-label="Go down">Down</button>
         </div>
     </div>
     <!-- Room data must load before game.js, which reads it -->
