@@ -18,8 +18,9 @@
         <div id="options">
             <button id="startButton">Start Game</button>
         </div>
-        <!-- Movement controls: each data-direction matches an exit key in data/rooms.js -->
-        <div id="compass">
+        <!-- Movement controls, hidden until the game starts.
+             Each data-direction matches an exit key in data/rooms.js. -->
+        <div id="compass" hidden>
             <button data-direction="north" aria-label="Go north">↑</button>
             <button data-direction="south" aria-label="Go south">↓</button>
             <button data-direction="east" aria-label="Go east">→</button>

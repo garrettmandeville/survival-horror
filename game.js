@@ -1,5 +1,11 @@
 const startButton = document.getElementById("startButton");
 const description = document.getElementById("description");
+const compassButtons = document.querySelectorAll("#compass button");
+const compass = document.getElementById("compass");
+
+// The id of the room the player is in. Stored as an id, not the room object,
+// so it is easy to save later; look the room up with rooms[currentRoomId].
+let currentRoomId = "basement";
 
 /**
  * Appends one line of narration to the description panel as its own paragraph.
@@ -13,12 +19,15 @@ function showLine(text) {
 
 /**
  * Clears the description panel and reveals the given lines one at a time.
- * The start button stays disabled until every line has appeared.
+ * The compass stays disabled until every line has appeared.
  * @param {string[]} lines - The lines to display, in order.
  */
 function narrate(lines) {
-    // Pending timers keep running after a second click, so block it until they finish.
-    startButton.disabled = true;
+    // Moving mid-narration would mix two rooms' text, because pending timers keep running.
+    // `disabled` is separate from `hidden`, so this never reveals arrows for missing exits.
+    for (const button of compassButtons) {
+        button.disabled = true;
+    }
     description.textContent = "";
 
     // `let` gives each timer its own copy of `i`; with `var` they would all share the final value.
@@ -30,20 +39,40 @@ function narrate(lines) {
 
     // `lines.length` rather than `lines.length - 1` adds one extra pause after the last line.
     setTimeout(() => {
-        startButton.disabled = false;
+        for (const button of compassButtons) {
+            button.disabled = false;
+        }
     }, lines.length * 3000);
 }
 
 /**
- * Plays the opening narration when the player starts the game.
+ * Moves the player into a room: narrates its description and shows
+ * only the compass arrows for exits the room has. Locked exits still show.
+ * @param {string} roomId - A key in `rooms`.
+ */
+function showRoom(roomId) {
+    currentRoomId = roomId;
+    const room = rooms[roomId];
+    narrate(room.description);
+
+    for (const button of compassButtons) {
+        const direction = button.dataset.direction;
+        if (room.exits[direction]) {
+            button.hidden = false;
+        } else {
+            button.hidden = true;
+        }
+    }
+}
+
+/**
+ * Starts the game in the first room. The start button is removed so the
+ * game can't be restarted mid-play, and the compass is revealed.
  */
 function handleStart() {
-    const lines = [
-        "You find yourself in a dark, abandoned house.",
-        "The air is thick with dust, and the only sound is the creaking of the floorboards beneath your feet.",
-        "You see a faint light coming from the hallway. Do you want to investigate?"
-    ];
-    narrate(lines);
+    startButton.hidden = true;
+    compass.hidden = false;
+    showRoom("basement");
 }
 
 startButton.addEventListener("click", handleStart);
