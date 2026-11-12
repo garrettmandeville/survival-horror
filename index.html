@@ -11,14 +11,15 @@
         <div id="status">
             <h1>Survival Horror</h1>
         </div>
+        <!-- Narration and choices are filled in by game.js -->
         <div id="description">
             <p>Welcome to the game!</p>
         </div>
         <div id="options">
             <button id="startButton">Start Game</button>
-
         </div>
     </div>
+    <!-- Room data must load before game.js, which reads it -->
     <script src="data/rooms.js"></script>
     <script src="game.js"></script>
 </body>

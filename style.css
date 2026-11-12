@@ -1,3 +1,4 @@
+/* Color palette: change a value here to restyle the whole game. */
 :root {
     --text: #c9c4b8;
     --background: #0b0b0c;
@@ -9,19 +10,24 @@ body {
     color: var(--text);
     font-family: 'Courier New', monospace;
 }
+
 h1 {
     font-size: 2rem;
 }
 
+/* A narrow column keeps lines to about 60 characters for comfortable reading. */
 #game {
     max-width: 60ch;
     margin: 0 auto;
     padding: 1.5rem;
 }
 
+/* ---------- Choice buttons ---------- */
+
 #options button {
     background-color: transparent;
     color: var(--text);
+    /* Buttons don't inherit font settings from the page by default. */
     font-family: inherit;
     font-size: inherit;
     border: 1px solid var(--accent);
@@ -29,10 +35,18 @@ h1 {
     cursor: pointer;
 }
 
-#options button:hover {
+/* Excludes disabled buttons so a faded button doesn't light up on hover. */
+#options button:hover:not(:disabled) {
     background-color: var(--accent);
 }
 
+/* Only shown for keyboard navigation, not after a mouse click. */
 #options button:focus-visible {
     outline: 2px solid var(--text);
+}
+
+/* Choices are disabled while narration plays. */
+#options button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
 }
