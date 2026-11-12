@@ -22,9 +22,10 @@ h1 {
     padding: 1.5rem;
 }
 
-/* ---------- Choice buttons ---------- */
+/* ---------- Buttons (choices and compass) ---------- */
 
-#options button {
+#options button,
+#compass button {
     background-color: transparent;
     color: var(--text);
     /* Buttons don't inherit font settings from the page by default. */
@@ -33,20 +34,69 @@ h1 {
     border: 1px solid var(--accent);
     padding: 0.5rem 1rem;
     cursor: pointer;
+    /* Gives narrow labels like the arrows a common size. */
+    min-width: 3rem;
 }
 
 /* Excludes disabled buttons so a faded button doesn't light up on hover. */
-#options button:hover:not(:disabled) {
+#options button:hover:not(:disabled),
+#compass button:hover:not(:disabled) {
     background-color: var(--accent);
 }
 
 /* Only shown for keyboard navigation, not after a mouse click. */
-#options button:focus-visible {
+#options button:focus-visible,
+#compass button:focus-visible {
     outline: 2px solid var(--text);
 }
 
-/* Choices are disabled while narration plays. */
-#options button:disabled {
+/* Choices and compass are disabled while narration plays. */
+#options button:disabled,
+#compass button:disabled {
     opacity: 0.4;
     cursor: not-allowed;
+}
+
+/* ---------- Compass ---------- */
+
+/* A 3x3 grid: the four arrows form a cross, with Up and Down in two empty corners.
+   Columns size to their buttons and the grid is centered, so it stays compact on wide screens. */
+#compass {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 0.5rem;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+#compass [data-direction="north"] {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+#compass [data-direction="west"] {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+#compass [data-direction="east"] {
+    grid-row: 2;
+    grid-column: 3;
+}
+
+#compass [data-direction="south"] {
+    grid-row: 3;
+    grid-column: 2;
+}
+
+#compass [data-direction="up"] {
+    grid-row: 1;
+    grid-column: 3;
+}
+
+#compass [data-direction="down"] {
+    grid-row: 3;
+    grid-column: 1;
 }
