@@ -7,18 +7,22 @@ function showLine(text) {
     description.append(line);
 }
 
-function handleStart() {
+function narrate(lines) {
     description.textContent = "";
-    const lines = [
-        "You find yourself in a dark, abandoned house.",
-        "The air is thick with dust, and the only sound is the creaking of the floorboards beneath your feet.",
-        "You see a faint light coming from the hallway. Do you want to investigate?"
-    ];
     for (let i = 0; i < lines.length; i++) {
         setTimeout(() => {
             showLine(lines[i]);
         }, i * 3000);
     }
+}
+
+function handleStart() {
+    const lines = [
+        "You find yourself in a dark, abandoned house.",
+        "The air is thick with dust, and the only sound is the creaking of the floorboards beneath your feet.",
+        "You see a faint light coming from the hallway. Do you want to investigate?"
+    ];
+    narrate(lines);
 }
 
 startButton.addEventListener("click", handleStart);
