@@ -1,2 +1,12 @@
-# macOS folder metadata
+# OS metadata
 .DS_Store
+Thumbs.db
+
+# Editor settings and swap files
+.vscode/
+*.swp
+*~
+
+# Local AI assistant notes and settings (kept off the public repo)
+CLAUDE.md
+.claude/
