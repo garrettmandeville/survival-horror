@@ -7,6 +7,5 @@ Thumbs.db
 *.swp
 *~
 
-# Local AI assistant notes and settings (kept off the public repo)
-CLAUDE.md
+# Per-machine Claude Code settings (CLAUDE.md itself is shared)
 .claude/

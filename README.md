@@ -58,6 +58,10 @@ Audio (planned) will need a local server such as Live Server, because browsers r
 - Separating data from logic
 - Writing clear commits and documenting code with JSDoc
 
+## How I'm working
+
+I write all of the game code myself. I use Claude Code as a mentor: it explains concepts, reviews my code and helps with documentation, but it doesn't write the game logic. [CLAUDE.md](CLAUDE.md) holds the project notes and ground rules it follows.
+
 ## License
 
 [MIT](LICENSE) © 2026 Garrett Mandeville
