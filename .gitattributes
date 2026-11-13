@@ -1,0 +1,10 @@
+# Store text files with LF line endings so every machine produces identical diffs
+* text=auto eol=lf
+
+# Binary assets: never convert or diff them as text
+*.mp3 binary
+*.ogg binary
+*.wav binary
+*.png binary
+*.jpg binary
+*.gif binary
